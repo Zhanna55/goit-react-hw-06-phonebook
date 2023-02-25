@@ -4,16 +4,8 @@ import { getFilteredContacts } from 'Redux/selectors';
 import { Contact } from 'components/ContactItem/ContactItem';
 import { Contacts } from './ContactList.styled';
 
-// const getFilteredContacts = ({ contacts, filter }) => {
-//   const normalizedFilter = filter.toLowerCase();
-//   return contacts.filter(contact =>
-//     contact.name.toLowerCase().includes(normalizedFilter)
-//   );
-// };
 const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);
-  console.log(contacts);
-
   return (
     <Contacts>
       {contacts.map(contact => (
