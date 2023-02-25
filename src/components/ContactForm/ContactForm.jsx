@@ -1,7 +1,8 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'Redux/contactsSlice';
 import { FormContainer, FormLabel, FormButton } from './ContactForm.styled';
 
 const schema = yup.object().shape({
@@ -21,9 +22,10 @@ const schema = yup.object().shape({
     ),
 });
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
   const handleSubmit = ({ name, number }, { resetForm }) => {
-    onSubmit({ id: nanoid(), name, number });
+    dispatch(addContact({ id: nanoid(), name, number }));
     resetForm();
   };
 
@@ -53,10 +55,6 @@ const ContactForm = ({ onSubmit }) => {
       </FormContainer>
     </Formik>
   );
-};
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
