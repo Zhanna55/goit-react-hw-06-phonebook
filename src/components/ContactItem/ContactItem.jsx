@@ -5,7 +5,7 @@ import { ContactItem, DeleteButton } from './ContactItem.styled';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-
+  console.log(contact);
   const onDeleteContact = () => dispatch(deleteContact(contact.id));
   return (
     <ContactItem>
@@ -24,5 +24,4 @@ Contact.propTypes = {
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }),
-  onDeleteContact: PropTypes.func.isRequired,
 };
